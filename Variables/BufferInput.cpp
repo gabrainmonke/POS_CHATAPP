@@ -12,3 +12,7 @@ enum class BufferInput {
     SendFile = 7,
     GroupMessages = 8
 };
+
+enum class BufferOutput {
+    RequestLogin = 1
+};
