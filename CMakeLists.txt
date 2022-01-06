@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
-project(POS_CHAT_GAB)
+project(POS_CHAT_FROMGIT)
 
 set(CMAKE_CXX_STANDARD 14)
 SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++14 -pthread")
@@ -14,5 +14,5 @@ include_directories(${APP_DOMAIN})
 include_directories(${APP_CALC})
 include_directories( ./src/include )
 
-add_executable(POS_CHAT_GAB main.cpp Klient/Client.cpp Klient/Client.h Server/Server.cpp Server/Server.h SubMenus/SubMenus.cpp SubMenus/SubMenus.h Variables/BufferInput.cpp Klient/AccountClient.cpp Klient/AccountClient.h Server/AccountServer.cpp Server/AccountServer.h ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(POS_CHAT_FROMGIT main.cpp Klient/Client.cpp Klient/Client.h Server/Server.cpp Server/Server.h SubMenus/SubMenus.cpp SubMenus/SubMenus.h Variables/BufferInput.cpp Klient/AccountClient.cpp Klient/AccountClient.h Server/AccountServer.cpp Server/AccountServer.h ${SOURCE_FILES} ${HEADER_FILES})
 

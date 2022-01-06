@@ -5,10 +5,14 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include "Client.h"
+#include "../SubMenus/SubMenus.h"
+
+#include "../Variables/BufferInput.cpp"
 
 Client::Client() {
 
-    int sockfd, n;
+    SubMenus subMenu;
+
     struct sockaddr_in serv_addr;
     struct hostent* server;
 
@@ -61,8 +65,16 @@ Client::Client() {
         return;
     }
 
-    printf("%s\n",buffer);
-    close(sockfd);
+    std::cout << "Prislo: " << std::endl;
+    std::cout << (int)buffer[0] << std::endl;
+
+    switch ((int)buffer[0]) {
+        case (int)BufferOutput::RequestLogin:
+            SendMessage(subMenu.LoginRegister());
+            break;
+        default:
+            return;
+    }
 
     return;
 }
@@ -71,10 +83,30 @@ Client::~Client() {
 
 }
 
+
+
 void Client::Connect() {
 
 }
 
 void Client::Disconnect() {
 
+}
+
+void Client::SendMessage(std::string message) {
+
+    char buffer[256];
+    bzero(buffer, 256);
+
+    strcpy(buffer, message.c_str());
+
+    n = write(sockfd, buffer, BUFF_SIZE);
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return;
+    }
+
+    std::cout << "Prislo: " << std::endl;
+    std::cout << (int)buffer[0] << std::endl;
 }

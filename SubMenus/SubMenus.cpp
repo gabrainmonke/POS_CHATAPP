@@ -4,6 +4,8 @@
 
 #include "SubMenus.h"
 
+#include "../Variables/BufferInput.cpp"
+
 SubMenus::SubMenus() {}
 
 SubMenus::~SubMenus() {}
@@ -11,29 +13,18 @@ SubMenus::~SubMenus() {}
 int SubMenus::Run(int vstup) {
 
     int vstupUser = 0;
+    std::string vstupUserMessage = "";
 
     switch (vstup) {
-        case 1: // Vytvorenie/Zrusenie Uctu
+        case 1: // Zrusenie Uctu
             std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
 
-            std::cout << "1. Vytvorenie Uctu" << std::endl;
-            std::cout << "2. Zrusenie Uctu" << std::endl;
-
-            std::cout << "-- Zadajte vstup: 1-2 --" << std::endl;
+            std::cout << "Zadajte svoje heslo: " << std::endl;
 
             std::cout << "" << std::endl;
             std::cout << "" << std::endl;
 
-            std::cin >> vstupUser;
-
-            if (vstupUser == 1)
-            {
-
-            }
-            else if (vstupUser == 2)
-            {
-
-            }
+            std::cin >> vstupUserMessage;
 
             break;
         case 2:
@@ -56,4 +47,132 @@ int SubMenus::Run(int vstup) {
 
     return 1;
 
+}
+
+std::string SubMenus::LoginRegister() {
+
+    int vstup = 0;
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+    std::cout << "1. Registrovat sa: " << std::endl;
+    std::cout << "2. Prihlasit sa: " << std::endl;
+
+    std::cout << "" << std::endl;
+    std::cout << "" << std::endl;
+
+    std::cin >> vstup;
+    char* test;
+
+    switch (vstup) {
+        case 1:
+            return Register();
+        case 2:
+            return Login();
+        default:
+            return nullptr;
+    }
+
+    return 0;
+}
+
+std::string SubMenus::Login() {
+    int vstup = 0;
+    std::string meno = "";
+    std::string heslo = "";
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+    std::cout << "Zadajte meno: ( max 16 znakov ) " << std::endl;
+
+    do {
+        std::cin >> meno;
+    } while (meno.length() > 16);
+
+    std::cout << "Zadajte heslo ( max 16 znakov ): " << std::endl;
+
+    do {
+        std::cin >> heslo;
+    } while (heslo.length() > 16);
+
+
+    std::cout << "Meno: " << meno << std::endl;
+    std::cout << "Heslo" << heslo << std::endl;
+
+    char outputBuffer[256];
+
+    int position = 0;
+    outputBuffer[0] = (int) BufferInput::Login;
+    position += 1;
+
+    outputBuffer[position] = meno.size();
+    position += 1;
+
+    meno.copy(outputBuffer + position, meno.size(), 0);
+    position += meno.size();
+
+    outputBuffer[position] = heslo.size();
+    position += 1;
+
+    heslo.copy(outputBuffer + position, heslo.size(), 0);
+    position += heslo.size();
+
+
+    return outputBuffer;
+
+}
+
+std::string SubMenus::Register() {
+    int vstup = 0;
+    std::string meno = "";
+    std::string heslo = "";
+    std::string hesloZnova = "";
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+    std::cout << "Zadajte meno: ( max 16 znakov ) " << std::endl;
+
+    do {
+        std::cin >> meno;
+    } while (meno.length() > 16);
+
+    do {
+        std::cout << "Zadajte heslo ( max 16 znakov ): " << std::endl;
+
+        do {
+            std::cin >> heslo;
+        } while (heslo.length() > 16);
+
+        std::cout << "Zadajte heslo znova ( max 16 znakov ): " << std::endl;
+
+        do {
+            std::cin >> hesloZnova;
+        } while (hesloZnova.length() > 16);
+
+        if (heslo != hesloZnova) {
+            std::cout << "Hesla sa nezhoduju! Skuste znova..." << std::endl;
+        }
+
+    } while (heslo != hesloZnova);
+
+    std::cout << "Meno: " << meno << std::endl;
+    std::cout << "Heslo" << heslo << std::endl;
+
+    char outputBuffer[256];
+
+    int position = 0;
+    outputBuffer[0] = (int) BufferInput::CreateAccount;
+    position += 1;
+
+    outputBuffer[position] = meno.size();
+    position += 1;
+
+    meno.copy(outputBuffer + position, meno.size(), 0);
+    position += meno.size();
+
+    outputBuffer[position] = heslo.size();
+    position += 1;
+
+    heslo.copy(outputBuffer + position, heslo.size(), 0);
+    position += heslo.size();
+
+
+    return outputBuffer;
 }

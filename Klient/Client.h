@@ -4,12 +4,14 @@
 
 #include <iostream>
 
+
+
 #ifndef UNTITLED13_CLIENT_H
 #define UNTITLED13_CLIENT_H
 
 #define MAX_USERS 1024
 
-#define BUFF_SIZE 1024
+#define BUFF_SIZE 256
 
 #include <math.h>
 #include <stdio.h>
@@ -30,6 +32,9 @@ private:
     char bufferSend[BUFF_SIZE];
     char bufferListen[BUFF_SIZE];
 
+    int sockfd;
+    int n;
+
 
 public:
     Client();
@@ -39,6 +44,8 @@ public:
     void Connect();
 
     void Disconnect();
+
+    void SendMessage(std::string message);
 
 };
 

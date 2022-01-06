@@ -25,10 +25,12 @@ int main() {
     if (vstupServerKlient == 1) {
         Server server;
         std::thread tmpThreadForListening(&Server::Run, &server);
+        std::thread tmpThreadForListeningClients(&Server::Listen, &server);
 
         std::cout << "Pokusam sa spustit Server" << std::endl;
 
         tmpThreadForListening.join();
+        tmpThreadForListeningClients.join();
     } else {
         Client client;
     }
@@ -51,8 +53,8 @@ int main() {
         std::cout << "" << std::endl;
         std::cout << "" << std::endl;
 
-        std::cout << "1. Vytvorte/Zruste Ucet" << std::endl;
-        std::cout << "2. Prihlasit/Odhlasit Sa" << std::endl;
+        std::cout << "1. Zruste Ucet" << std::endl;
+        std::cout << "2. Odhlasit Sa" << std::endl;
         std::cout << "3. Kontakty" << std::endl;
         std::cout << "4. Poslat spravu" << std::endl;
         std::cout << "5. Poslat subor" << std::endl;

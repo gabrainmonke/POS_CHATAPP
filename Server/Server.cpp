@@ -8,6 +8,7 @@
 Server::Server() {
 
 
+
     // Inicializacia Server Socketu
 
     struct sockaddr_in serv_addr;
@@ -60,6 +61,7 @@ void Server::Run() {
 
         // V nasledujucom kroku cakame na pripojenie klienta
         ClientSocket = accept(ServerSocket, (struct sockaddr *) &cli_addr, &cli_len);
+        connectedClients[countOfConnected] = ClientSocket;
 
         std::cout << "Buba" << std::endl;
         std::cout << ClientSocket << std::endl;
@@ -69,6 +71,12 @@ void Server::Run() {
         char *s = inet_ntoa(cli_addr.sin_addr);
         printf("IP address: %s\n", s);
 
+        ipOfClients[countOfConnected] = {
+                cli_addr.sin_addr.s_addr,
+                cli_addr.sin_port
+        };
+
+        countOfConnected++;
 
         if (ClientSocket < 0) {
             std::cout << "ERROR: Error on accept" << std::endl;
@@ -77,13 +85,106 @@ void Server::Run() {
 
         std::cout << "Nig" << std::endl;
 
-        const char *msg = "Uspesne pripojeny na server";
-        n = write(ClientSocket, msg, strlen(msg) + 1);
+        const int msg = (int) BufferOutput::RequestLogin;
+        n = write(ClientSocket, &msg, sizeof(msg));
         if (n < 0) {
             perror("ERROR: Error writing to socket");
             return;
         }
 
+
+    }
+
+}
+
+void Server::Listen() {
+
+    while (appRunning > 0) {
+
+        while (countOfConnected > 0) {
+
+            char buffer[256];
+            bzero(buffer, 256);
+
+            int n = 0;
+
+            for (int i = 0; i < countOfConnected; ++i) {
+
+                n = read(connectedClients[i], buffer, 255);
+                if (n < 0) {
+                    perror("Error reading from socket");
+                }
+
+
+                if (buffer[0] != 0) {
+                    std::cout << "dsads" << std::endl;
+
+                    int pocitadlo = 1;
+                    int countOfWords = 0;
+                    int countOfCharsToWrite = 0;
+                    std::string meno;
+                    std::string heslo;
+                    std::string string;
+
+                    switch ((BufferInput) buffer[0]) {
+                        case BufferInput::CreateAccount:
+                            std::cout << "Pokus o vytvorenie" << std::endl;
+
+                            while (buffer[pocitadlo] != 0) {
+                                countOfCharsToWrite = buffer[pocitadlo];
+                                pocitadlo++;
+                                string = std::string(&buffer[pocitadlo], &buffer[pocitadlo + countOfCharsToWrite]);
+                                std::cout << string << std::endl;
+                                pocitadlo += countOfCharsToWrite;
+                                countOfWords++;
+
+                                if (countOfWords == 1) { // Meno
+                                    meno = string;
+                                } else if (countOfWords == 2) { // Priezvisko
+                                    heslo = string;
+                                }
+
+                            }
+
+                            accountServer.SaveToFile(meno, heslo);
+
+
+                            break;
+                        case BufferInput::DeleteAccount:
+                            std::cout << "Pokus o zrusenie" << std::endl;
+                            break;
+                        case BufferInput::Login:
+                            std::cout << "Pokus o prihlasenie" << std::endl;
+                            break;
+                        case BufferInput::LogOut:
+                            std::cout << "Pokus o odhlasenie" << std::endl;
+                            break;
+                        case BufferInput::Contacts:
+                            std::cout << "Pokus o kontakty" << std::endl;
+                            break;
+                        case BufferInput::SendMessage:
+                            std::cout << "Pokus o odoslanie spravy" << std::endl;
+                            break;
+                        case BufferInput::SendFile:
+                            std::cout << "Pokus o odoslanie suboru" << std::endl;
+                            break;
+                        case BufferInput::GroupMessages:
+                            std::cout << "Pokus o odoslanie skupinovej spravy" << std::endl;
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+
+            }
+
+            sleep(1);
+
+
+        }
+        sleep(1);
     }
 
 }

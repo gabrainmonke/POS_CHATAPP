@@ -4,6 +4,11 @@
 
 #include <iostream>
 
+#include "../Variables/BufferInput.cpp"
+#include "AccountServer.h"
+
+#include <thread>
+
 #ifndef UNTITLED13_SERVER_H
 #define UNTITLED13_SERVER_H
 
@@ -44,14 +49,19 @@ private:
 
     char bufferSend[BUFF_SIZE];
     char bufferListen[BUFF_SIZE];
-
     IP_PORT ipOfClients[MAX_USERS] = {0};
+
+    int connectedClients[MAX_USERS] = {0};
+
+    int countOfConnected = 0;
 
     bool appRunning = false;
 
     int ServerSocket;
 
     int ClientSocket;
+
+    AccountServer accountServer;
 
 public:
 
@@ -63,7 +73,7 @@ public:
 
     void Listen();
 
-
+    // pep
 };
 
 

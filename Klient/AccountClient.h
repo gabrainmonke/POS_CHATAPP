@@ -30,7 +30,7 @@ public:
             std::string accName, std::string accPass, int accID
     );
 
-    void AddContact(int accID);
+    bool AddContact(int accID);
 
 
     ~AccountClient();
