@@ -34,10 +34,7 @@ bool AccountServer::AddContact(int accID) {
 }
 
 bool AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
-    std::ofstream test;
-    test.open("../Files/Accounts.txt", std::fstream::out | std::fstream::in);
-
-    File.open("../Files/Accounts.txt", std::fstream::out | std::fstream::in);
+    File.open("Accounts.txt", std::ios::out | std::ios::in | std::ios::app);
 
     std::string id;
     std::string meno;
@@ -48,7 +45,8 @@ bool AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
     idPocitadlo = CheckIfExists(pMeno, pHeslo);
 
     if (idPocitadlo != -1) {
-        File << idPocitadlo << ';' << pMeno << ';' << pHeslo  << std::endl;
+        File << std::to_string(idPocitadlo) + ";" + pMeno + ";" + pHeslo + "\n";
+        //File.write(dataAccount.data(), dataAccount.size());
         File.close();
         return true;
     }
@@ -59,22 +57,31 @@ bool AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
 
 int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
 
-    int idPocitadlo = 0;
+    int idPocitadlo = 1;
 
     std::string id;
     std::string meno;
     std::string heslo;
 
+    int oldPos = 0;
+
+
+
     if (File.is_open()) {
         std::string line;
         std::string splitLine;
         std::stringstream lineInStringStream;
-
         getline(File, line);
+        File.clear();
+        File.seekg(0);
         if (line.empty()) {
-            File << "ID;MENO;HESLO" << std::endl;
+            // File.write(identifier.data(), identifier.size());
+            File << "ID;MENO;HESLO\n";
+        } else {
+            getline(File, line);
         }
         do {
+            oldPos =  File.tellg();
             getline(File, line);
             lineInStringStream << line;
             if (!line.empty()) {
@@ -96,7 +103,9 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
         } while (!line.empty());
     }
 
+    File.clear();
+    File.seekg(oldPos);
+
+
     return idPocitadlo;
 }
-
-
