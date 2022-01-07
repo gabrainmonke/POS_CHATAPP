@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sstream>
 
+#include "../Variables/BufferInput.cpp"
 
 AccountServer::AccountServer(
 ) {
@@ -33,7 +34,7 @@ bool AccountServer::AddContact(int accID) {
     return false;
 }
 
-bool AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
+int AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
     File.open("Accounts.txt", std::ios::out | std::ios::in | std::ios::app);
 
     std::string id;
@@ -48,10 +49,10 @@ bool AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
         File << std::to_string(idPocitadlo) + ";" + pMeno + ";" + pHeslo + "\n";
         //File.write(dataAccount.data(), dataAccount.size());
         File.close();
-        return true;
+        return idPocitadlo;
     }
     File.close();
-    return false;
+    return -1;
 
 }
 
@@ -109,3 +110,18 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
 
     return idPocitadlo;
 }
+
+std::string AccountServer::SendSuccessRegister(int ID) {
+
+    std::string regSucc = std::to_string((int)BufferOutput::RegistrationSuccess) + std::to_string(ID);
+    return regSucc;
+
+
+}
+
+std::string AccountServer::SendUnsuccessfulRegister() {
+    std::string regSucc = std::to_string((int)BufferOutput::RegistrationUnsuccessful);
+    return regSucc;
+}
+
+

@@ -10,6 +10,7 @@
 #include <vector>
 #include <fstream>
 
+
 #ifndef UNTITLED13_ACCOUNTCLIENT_H
 #define UNTITLED13_ACCOUNTCLIENT_H
 
@@ -35,9 +36,13 @@ public:
 
     bool AddContact(int accID);
 
-    bool SaveToFile(std::string pMeno, std::string pHeslo);
+    int SaveToFile(std::string pMeno, std::string pHeslo);
 
     int CheckIfExists(std::string pMeno, std::string pHeslo);
+
+    std::string SendSuccessRegister(int ID);
+
+    std::string SendUnsuccessfulRegister();
 
 
     ~AccountServer();

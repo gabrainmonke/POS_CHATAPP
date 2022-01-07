@@ -125,6 +125,7 @@ void Server::Listen() {
                     std::string meno;
                     std::string heslo;
                     std::string string;
+                    int registracneID;
 
                     switch ((BufferInput) buffer[0]) {
                         case BufferInput::CreateAccount:
@@ -146,8 +147,15 @@ void Server::Listen() {
 
                             }
 
-                            accountServer.SaveToFile(meno, heslo);
+                            registracneID = accountServer.SaveToFile(meno, heslo);
 
+                            // Uspesna Registracia
+                            if (registracneID >= 0) {
+                                SendMessage(accountServer.SendSuccessRegister(registracneID), connectedClients[i]);
+                                // Neuspesna Registracia
+                            } else {
+                                SendMessage(accountServer.SendUnsuccessfulRegister(), connectedClients[i]);
+                            }
 
                             break;
                         case BufferInput::DeleteAccount:
@@ -189,4 +197,24 @@ void Server::Listen() {
 
 }
 
+
+void Server::SendMessage(std::string message, int client) {
+
+    char buffer[256];
+    bzero(buffer, 256);
+
+    strcpy(buffer, message.c_str());
+
+    int n;
+
+    n = write(client, buffer, BUFF_SIZE);
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return;
+    }
+
+    std::cout << "Prislo: " << std::endl;
+    std::cout << (int)buffer[0] << std::endl;
+}
 

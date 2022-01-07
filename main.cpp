@@ -33,6 +33,10 @@ int main() {
         tmpThreadForListeningClients.join();
     } else {
         Client client;
+        std::thread tmpClientThreadForListening(&Client::Listen, &client);
+        std::thread tmpClientThreadForMenu(&Client::Menu, &client);
+        tmpClientThreadForListening.join();
+        tmpClientThreadForMenu.join();
     }
 
     // Ak sme spustili Server, interakcia konci...

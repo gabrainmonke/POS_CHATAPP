@@ -21,6 +21,7 @@
 #include <netinet/in.h>
 #include <string.h>
 #include <unistd.h>
+#include "../SubMenus/SubMenus.h"
 
 class Client {
 
@@ -35,6 +36,11 @@ private:
     int sockfd;
     int n;
 
+    bool clientConnected = false;
+
+    SubMenus subMenu;
+
+    int priznakMenu;
 
 public:
     Client();
@@ -46,6 +52,10 @@ public:
     void Disconnect();
 
     void SendMessage(std::string message);
+
+    void Listen();
+
+    void Menu();
 
 };
 

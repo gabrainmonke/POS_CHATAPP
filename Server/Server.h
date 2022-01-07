@@ -4,9 +4,9 @@
 
 #include <iostream>
 
-#include "../Variables/BufferInput.cpp"
-#include "AccountServer.h"
 
+#include "AccountServer.h"
+#include "../Variables/BufferInput.cpp"
 #include <thread>
 
 #ifndef UNTITLED13_SERVER_H
@@ -14,7 +14,7 @@
 
 #define MAX_USERS 1024
 
-#define BUFF_SIZE 1024
+#define BUFF_SIZE 256
 
 #include <math.h>
 #include <stdio.h>
@@ -72,6 +72,8 @@ public:
     void Run();
 
     void Listen();
+
+    void SendMessage(std::string message, int client);
 
     // pep
 };
