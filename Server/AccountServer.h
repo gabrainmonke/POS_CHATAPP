@@ -38,11 +38,19 @@ public:
 
     int SaveToFile(std::string pMeno, std::string pHeslo);
 
-    int CheckIfExists(std::string pMeno, std::string pHeslo);
+    int CheckIfExists(std::string pMeno, std::string pHeslo, bool onlyCheck = false, int pId = -1);
 
     std::string SendSuccessRegister(int ID);
 
     std::string SendUnsuccessfulRegister();
+
+    std::string SendSuccessLogin();
+
+    std::string SendUnsuccessfulLogin();
+
+    std::string SendSuccessDelete();
+
+    std::string SendUnsuccessfulDelete();
 
 
     ~AccountServer();

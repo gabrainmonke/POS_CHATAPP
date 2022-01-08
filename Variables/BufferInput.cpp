@@ -16,5 +16,9 @@ enum class BufferInput {
 enum class BufferOutput {
     RequestLogin = 1,
     RegistrationSuccess = 2,
-    RegistrationUnsuccessful = 3
+    RegistrationUnsuccessful = 3,
+    LoginSuccess = 4,
+    LoginUnsuccessful = 5,
+    DeleteSuccess = 6,
+    DeleteUnsuccessful = 7
 };

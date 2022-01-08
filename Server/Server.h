@@ -34,6 +34,11 @@ typedef struct IP_ADRESS_AND_PORT {
 
 } IP_PORT;
 
+typedef struct LOGGED_IN_CLIENT {
+    int socket;
+    int id;
+} LOG_IN_CL;
+
 class Server {
 
 private:
@@ -42,7 +47,7 @@ private:
     int socType = SOCK_STREAM;
     int socProtocol = INADDR_ANY;;
 
-    int port = 87615;
+    int port = 87614;
 
     // SOCKET socketServer;
     // SOCKETADDR_IN address;
@@ -53,7 +58,11 @@ private:
 
     int connectedClients[MAX_USERS] = {0};
 
+    std::vector<LOG_IN_CL> loggedInClients;
+
     int countOfConnected = 0;
+
+    int countOfLoggedIn = 0;
 
     bool appRunning = false;
 
@@ -74,6 +83,10 @@ public:
     void Listen();
 
     void SendMessage(std::string message, int client);
+
+    int LoginRequest(char* buffer);
+
+    int DeleteRequest(int id , char* buffer);
 
     // pep
 };

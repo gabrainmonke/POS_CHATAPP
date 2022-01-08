@@ -28,7 +28,7 @@ class Client {
 private:
     int socDomena = AF_INET;
     int socType = SOCK_STREAM;
-    int port = 87615;
+    int port = 87614;
 
     char bufferSend[BUFF_SIZE];
     char bufferListen[BUFF_SIZE];

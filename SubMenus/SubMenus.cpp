@@ -2,6 +2,7 @@
 // Created by El Gobol on 02/01/2022.
 //
 
+#include <cstring>
 #include "SubMenus.h"
 
 #include "../Variables/BufferInput.cpp"
@@ -80,6 +81,7 @@ std::string SubMenus::Login() {
     std::string meno = "";
     std::string heslo = "";
     std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+    std::cout << "Prosim prihlaste sa" << std::endl;
 
     std::cout << "Zadajte meno: ( max 16 znakov ) " << std::endl;
 
@@ -98,6 +100,7 @@ std::string SubMenus::Login() {
     std::cout << "Heslo" << heslo << std::endl;
 
     char outputBuffer[256];
+    bzero(outputBuffer, 256);
 
     int position = 0;
     outputBuffer[0] = (int) BufferInput::Login;
@@ -156,6 +159,7 @@ std::string SubMenus::Register() {
     std::cout << "Heslo" << heslo << std::endl;
 
     char outputBuffer[256];
+    bzero(outputBuffer, 256);
 
     int position = 0;
     outputBuffer[0] = (int) BufferInput::CreateAccount;
@@ -176,3 +180,82 @@ std::string SubMenus::Register() {
 
     return outputBuffer;
 }
+
+std::string SubMenus::AfterLoginMenu() {
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+    std::cout << "" << std::endl;
+    std::cout << "" << std::endl;
+
+    std::cout << "1. Zruste Ucet" << std::endl;
+    std::cout << "2. Odhlasit Sa" << std::endl;
+    std::cout << "3. Kontakty" << std::endl;
+    std::cout << "4. Poslat spravu" << std::endl;
+    std::cout << "5. Poslat subor" << std::endl;
+    std::cout << "6. Skupinove konverzacie" << std::endl;
+
+    std::cout << "" << std::endl;
+    std::cout << "" << std::endl;
+
+    std::cout << "7. Vypnut" << std::endl;
+
+    int tmpInput = 0;
+
+    std::cout << "-- Zadajte vstup: 1-7 --" << std::endl;
+    std::cin >> tmpInput;
+    std::cout << "-- Zadali ste: " << tmpInput << "." << std::endl;
+
+    switch (tmpInput) {
+        case 1:
+            return DeleteAccount();
+        default:
+            return std::to_string(-1);
+    }
+
+
+}
+
+std::string SubMenus::DeleteAccount() {
+    int vstup = 0;
+    std::string heslo = "";
+    std::string hesloZnova = "";
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+    do {
+        std::cout << "Zadajte heslo ( max 16 znakov ): " << std::endl;
+
+        do {
+            std::cin >> heslo;
+        } while (heslo.length() > 16);
+
+        std::cout << "Zadajte heslo znova ( max 16 znakov ): " << std::endl;
+
+        do {
+            std::cin >> hesloZnova;
+        } while (hesloZnova.length() > 16);
+
+        if (heslo != hesloZnova) {
+            std::cout << "Hesla sa nezhoduju! Skuste znova..." << std::endl;
+        }
+
+    } while (heslo != hesloZnova);
+
+    std::cout << "Heslo: " << heslo << std::endl;
+
+    char outputBuffer[256];
+
+    int position = 0;
+    outputBuffer[0] = (int) BufferInput::DeleteAccount;
+    position += 1;
+
+    outputBuffer[position] = heslo.size();
+    position += 1;
+
+    heslo.copy(outputBuffer + position, heslo.size(), 0);
+    position += heslo.size();
+
+
+    return outputBuffer;
+}
+
+

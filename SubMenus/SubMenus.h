@@ -19,6 +19,8 @@ public:
     std::string LoginRegister();
     std::string Login();
     std::string Register();
+    std::string AfterLoginMenu();
+    std::string DeleteAccount();
 };
 
 

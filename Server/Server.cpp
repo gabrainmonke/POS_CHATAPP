@@ -126,6 +126,10 @@ void Server::Listen() {
                     std::string heslo;
                     std::string string;
                     int registracneID;
+                    int clientSocket = -1;
+                    int loginID = -1;
+                    int clientToRemove = -1;
+                    int pocitadloIterator = 0;
 
                     switch ((BufferInput) buffer[0]) {
                         case BufferInput::CreateAccount:
@@ -160,9 +164,42 @@ void Server::Listen() {
                             break;
                         case BufferInput::DeleteAccount:
                             std::cout << "Pokus o zrusenie" << std::endl;
+                            clientSocket = connectedClients[i];
+
+                            for (LOG_IN_CL item: loggedInClients) {
+                                if (item.socket == clientSocket) {
+                                    loginID = item.id;
+                                    clientToRemove = pocitadloIterator;
+                                }
+                                pocitadloIterator++;
+                            }
+
+                            //Ak by sa stalo, ze nenajde loginID a teda vrati -1, odpoji klienta..., pretoze tu nema co robit
+
+                            registracneID = DeleteRequest(loginID, buffer);
+
+                            if (registracneID >= 0) {
+                                loggedInClients.erase(loggedInClients.begin() + clientToRemove);
+                                SendMessage(accountServer.SendSuccessDelete(), connectedClients[i]);
+                            } else {
+                                SendMessage(accountServer.SendUnsuccessfulDelete(), connectedClients[i]);
+                            }
                             break;
                         case BufferInput::Login:
                             std::cout << "Pokus o prihlasenie" << std::endl;
+                            registracneID = LoginRequest(buffer);
+
+                            if (registracneID >= 0) {
+
+                                loggedInClients.push_back({connectedClients[i], registracneID});
+
+                                countOfLoggedIn++;
+                                SendMessage(accountServer.SendSuccessLogin(), connectedClients[i]);
+                                // Neuspesny Login
+                            } else {
+                                SendMessage(accountServer.SendUnsuccessfulLogin(), connectedClients[i]);
+                            }
+
                             break;
                         case BufferInput::LogOut:
                             std::cout << "Pokus o odhlasenie" << std::endl;
@@ -208,13 +245,62 @@ void Server::SendMessage(std::string message, int client) {
     int n;
 
     n = write(client, buffer, BUFF_SIZE);
-    if (n < 0)
-    {
+    if (n < 0) {
         perror("Error writing to socket");
         return;
     }
 
     std::cout << "Prislo: " << std::endl;
-    std::cout << (int)buffer[0] << std::endl;
+    std::cout << (int) buffer[0] << std::endl;
 }
+
+int Server::LoginRequest(char *buffer) {
+
+    int pocitadlo = 1;
+    int countOfCharsToWrite = 0;
+    std::string string;
+    int countOfWords = 0;
+
+    std::string meno;
+    std::string heslo;
+
+    while (buffer[pocitadlo] != 0) {
+        countOfCharsToWrite = buffer[pocitadlo];
+        pocitadlo++;
+        string = std::string(&buffer[pocitadlo], &buffer[pocitadlo + countOfCharsToWrite]);
+        std::cout << string << std::endl;
+        pocitadlo += countOfCharsToWrite;
+        countOfWords++;
+
+        if (countOfWords == 1) { // Meno
+            meno = string;
+        } else if (countOfWords == 2) { // Priezvisko
+            heslo = string;
+        }
+
+    }
+
+    return accountServer.CheckIfExists(meno, heslo, true);
+}
+
+int Server::DeleteRequest(int id, char *buffer) {
+
+    int pocitadlo = 1;
+    int countOfCharsToWrite = 0;
+    std::string heslo;
+    int countOfWords = 0;
+
+
+    while (buffer[pocitadlo] != 0) {
+        countOfCharsToWrite = buffer[pocitadlo];
+        pocitadlo++;
+        heslo = std::string(&buffer[pocitadlo], &buffer[pocitadlo + countOfCharsToWrite]);
+        std::cout << heslo << std::endl;
+        pocitadlo += countOfCharsToWrite;
+    }
+
+    return accountServer.CheckIfExists("", heslo, true, id);
+}
+
+
 

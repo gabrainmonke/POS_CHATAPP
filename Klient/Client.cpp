@@ -119,7 +119,6 @@ void Client::Listen() {
         int poziciaCislaVPoli = 0;
         char numberInCharArray[10];
 
-
         n = read(sockfd, buffer, BUFF_SIZE);
         if (n < 0) {
             perror("Error reading from socket");
@@ -160,6 +159,20 @@ void Client::Listen() {
                     break;
                 case BufferOutput::RegistrationUnsuccessful:
                     std::cout << "REGISTRADO UNSUCEFSZA" << std::endl;
+
+                    priznakMenu = 2;
+                    break;
+                case BufferOutput::LoginSuccess:
+                    std::cout << "LOGIN SUCCESSFULLO" << std::endl;
+                    priznakMenu = 3;
+                    break;
+                case BufferOutput::LoginUnsuccessful:
+                    std::cout << "LOGINDO UNSUCEFSZA" << std::endl;
+                    priznakMenu = 4;
+                    break;
+                case BufferOutput::DeleteSuccess:
+                    break;
+                case BufferOutput::DeleteUnsuccessful:
                     break;
             }
             bzero(buffer, BUFF_SIZE);
@@ -181,11 +194,17 @@ void Client::Menu() {
 
             switch (priznakMenu) {
                 case 1:
-                    SendMessage(subMenu.LoginRegister());
+                    SendMessage(subMenu.Login());
                     break;
                 case 2:
+                    SendMessage(subMenu.LoginRegister());
                     break;
-
+                case 3:
+                    SendMessage(subMenu.AfterLoginMenu());
+                    break;
+                case 4:
+                    SendMessage(subMenu.Login());
+                    break;
             }
 
             // Pri prijati spravy si bude treba pamat aj predosly priznak

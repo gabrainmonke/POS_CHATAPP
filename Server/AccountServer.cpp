@@ -56,7 +56,7 @@ int AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
 
 }
 
-int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
+int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo, bool onlyCheck, int pId) {
 
     int idPocitadlo = 1;
 
@@ -66,7 +66,9 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
 
     int oldPos = 0;
 
-
+    if (onlyCheck && !File.is_open()) {
+        File.open("Accounts.txt", std::ios::out | std::ios::in );
+    }
 
     if (File.is_open()) {
         std::string line;
@@ -84,6 +86,7 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
         do {
             oldPos =  File.tellg();
             getline(File, line);
+            lineInStringStream.clear();
             lineInStringStream << line;
             if (!line.empty()) {
                 getline(lineInStringStream, splitLine, ';');
@@ -94,11 +97,27 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
                 heslo = splitLine;
 
                 idPocitadlo++;
+                int numberID = std::stoi(id);
 
-                if (meno == pMeno) {
+                if (onlyCheck ) {
+                    if (pId > 0 && (pId == numberID) && (heslo == pHeslo)) {
+                        File.clear();
+                        File.seekg(oldPos);
+                        std::string invalidLine = "-1;-1;-1";
+                        invalidLine.resize(line.size());
+                        File << invalidLine << std::endl;
+                        return numberID;
+                    } else if ((meno == pMeno) && (heslo == pHeslo)) {
+                        return std::stoi(id);
+                    }
+
+
+
+                } else if (!onlyCheck && (meno == pMeno)) {
                     // Meno uz existuje
                     return -1;
                 }
+
             }
 
         } while (!line.empty());
@@ -107,21 +126,43 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo) {
     File.clear();
     File.seekg(oldPos);
 
+    if (onlyCheck) {
+        return -1;
+    } else {
+        return idPocitadlo;
+    }
 
-    return idPocitadlo;
 }
 
 std::string AccountServer::SendSuccessRegister(int ID) {
-
     std::string regSucc = std::to_string((int)BufferOutput::RegistrationSuccess) + std::to_string(ID);
     return regSucc;
-
-
 }
 
 std::string AccountServer::SendUnsuccessfulRegister() {
     std::string regSucc = std::to_string((int)BufferOutput::RegistrationUnsuccessful);
     return regSucc;
 }
+
+std::string AccountServer::SendSuccessLogin() {
+    std::string logSucc = std::to_string((int)BufferOutput::LoginSuccess);
+    return logSucc;
+}
+
+std::string AccountServer::SendUnsuccessfulLogin() {
+    std::string logUnsucc = std::to_string((int)BufferOutput::LoginUnsuccessful);
+    return logUnsucc;
+}
+
+std::string AccountServer::SendSuccessDelete() {
+    std::string delSucc = std::to_string((int)BufferOutput::DeleteSuccess);
+    return delSucc;
+}
+
+std::string AccountServer::SendUnsuccessfulDelete() {
+    std::string delUnsucc = std::to_string((int)BufferOutput::DeleteUnsuccessful);
+    return delUnsucc;
+}
+
 
 
