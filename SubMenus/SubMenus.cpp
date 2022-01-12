@@ -328,11 +328,45 @@ std::string SubMenus::AddContact() {
 }
 
 std::string SubMenus::RemoveContact() {
-    return nullptr;
+    int vstup = 0;
+    std::string meno = "";
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+
+    std::cout << "Zadajte meno kontaktu pre odstránenie. ( max 16 znakov ): " << std::endl;
+
+    do {
+        std::cin >> meno;
+    } while (meno.length() > 16);
+
+
+    char outputBuffer[256];
+    bzero(outputBuffer, 256);
+
+    int position = 0;
+    outputBuffer[0] = (int) BufferInput::RemoveContact;
+    position += 1;
+
+    outputBuffer[position] = meno.size();
+    position += 1;
+
+    meno.copy(outputBuffer + position, meno.size(), 0);
+    position += meno.size();
+
+    return outputBuffer;
 }
 
 std::string SubMenus::ShowContacts() {
-    return nullptr;
+    int vstup = 0;
+
+    char outputBuffer[256];
+    bzero(outputBuffer, 256);
+
+    int position = 0;
+    outputBuffer[0] = (int) BufferInput::RequestContacts;
+    position += 1;
+
+    return outputBuffer;
 }
 
 

@@ -26,5 +26,8 @@ enum class BufferOutput {
     DeleteUnsuccessful = 7,
     LogoutSuccessful = 8,
     AddContactSuccessful = 9,
-    AddContactUnsuccessful = 'a'
+    AddContactUnsuccessful = 'a',
+    RemoveContactSuccessful = 'b',
+    RemoveContactUnsuccessful = 'c',
+    RequestContactsSuccessful = 'd',
 };

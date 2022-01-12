@@ -43,7 +43,9 @@ public:
 
     int CheckIfExists(std::string pMeno, std::string pHeslo = "", bool onlyCheck = false, int pId = -1);
 
-    int CheckIfExistsInContactsFile(int mojeID, int idKontaktu, std::string menoKontaktu, bool onlyCheck = false, int pId = -1);
+    int CheckIfExistsInContactsFile(int mojeID, int idKontaktu, std::string menoKontaktu, bool onlyCheck = false, int pId = -1, bool parDelete = false);
+
+    std::string LoadContactsFromFileID(int mojeID);
 
     std::string SendSuccessRegister(int ID);
 
@@ -62,6 +64,13 @@ public:
     std::string SendSuccessAddContact(int idKontaktu, std::string menoKontaktu);
 
     std::string SendUnsuccessfulAddContact();
+
+    std::string SendSuccessRemoveContact(int idKontaktu, std::string menoKontaktu);
+
+    std::string SendUnsuccessfulRemoveContact();
+
+    std::string SendSuccessShowContacts(std::string contacts);
+
 
 
     ~AccountServer();

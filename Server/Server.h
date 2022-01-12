@@ -52,7 +52,7 @@ private:
     int socType = SOCK_STREAM;
     int socProtocol = INADDR_ANY;;
 
-    int port = 87613;
+    int port = 87619;
 
     // SOCKET socketServer;
     // SOCKETADDR_IN address;
@@ -94,6 +94,10 @@ public:
     int DeleteRequest(int id , char* buffer);
 
     ID_MENO AddContactRequest(int loginID, char *buffer);
+
+    ID_MENO RemoveContactRequest(int loginID, char *buffer);
+
+    std::string ShowContactsRequest(int loginID);
 
     // pep
 };

@@ -131,6 +131,7 @@ void Server::Listen() {
                     int clientToRemove = -1;
                     int pocitadloIterator = 0;
                     ID_MENO regIDMENO;
+                    std::string kontakty;
 
                     switch ((BufferInput) buffer[0]) {
                         case BufferInput::CreateAccount:
@@ -249,7 +250,8 @@ void Server::Listen() {
                             regIDMENO = AddContactRequest(loginID, buffer);
 
                             if (regIDMENO.id > -1) {
-                                SendMessage(accountServer.SendSuccessAddContact(regIDMENO.id, regIDMENO.meno), connectedClients[i]);
+                                SendMessage(accountServer.SendSuccessAddContact(regIDMENO.id, regIDMENO.meno),
+                                            connectedClients[i]);
                             } else {
                                 SendMessage(accountServer.SendUnsuccessfulAddContact(), connectedClients[i]);
                             }
@@ -257,9 +259,42 @@ void Server::Listen() {
                             break;
                         case BufferInput::RemoveContact:
                             std::cout << "Pokus o vymazanie kontaktu" << std::endl;
+                            clientSocket = connectedClients[i];
+
+                            for (LOG_IN_CL item: loggedInClients) {
+                                if (item.socket == clientSocket) {
+                                    loginID = item.id;
+                                    clientToRemove = pocitadloIterator;
+                                }
+                                pocitadloIterator++;
+                            }
+
+                            regIDMENO = RemoveContactRequest(loginID, buffer);
+
+                            if (regIDMENO.id > -1) {
+                                SendMessage(accountServer.SendSuccessRemoveContact(regIDMENO.id, regIDMENO.meno),
+                                            connectedClients[i]);
+                            } else {
+                                SendMessage(accountServer.SendUnsuccessfulRemoveContact(), connectedClients[i]);
+                            }
                             break;
                         case BufferInput::RequestContacts:
                             std::cout << "Pokus o vyziadanie vsetkych kontaktov" << std::endl;
+
+                            clientSocket = connectedClients[i];
+
+                            for (LOG_IN_CL item: loggedInClients) {
+                                if (item.socket == clientSocket) {
+                                    loginID = item.id;
+                                    clientToRemove = pocitadloIterator;
+                                }
+                                pocitadloIterator++;
+                            }
+
+                            kontakty = ShowContactsRequest(loginID);
+
+                            SendMessage(accountServer.SendSuccessShowContacts(kontakty), connectedClients[i]);
+
                             break;
                         default:
                             break;
@@ -344,11 +379,12 @@ int Server::DeleteRequest(int id, char *buffer) {
         pocitadlo += countOfCharsToWrite;
     }
 
+
     return accountServer.CheckIfExists("", heslo, true, id);
 }
 
 
-ID_MENO Server::AddContactRequest(int loginID,char *buffer) {
+ID_MENO Server::AddContactRequest(int loginID, char *buffer) {
 
     int pocitadlo = 1;
     int countOfCharsToWrite = 0;
@@ -365,10 +401,36 @@ ID_MENO Server::AddContactRequest(int loginID,char *buffer) {
 
     int idKontaktu = accountServer.SaveToContactsFile(loginID, menoKontaktu);
 
-    return ID_MENO {
+    return ID_MENO{
             idKontaktu,
             menoKontaktu
     };
+}
+
+ID_MENO Server::RemoveContactRequest(int loginID, char *buffer) {
+    int pocitadlo = 1;
+    int countOfCharsToWrite = 0;
+    std::string menoKontaktu;
+    int countOfWords = 0;
+
+    while (buffer[pocitadlo] != 0) {
+        countOfCharsToWrite = buffer[pocitadlo];
+        pocitadlo++;
+        menoKontaktu = std::string(&buffer[pocitadlo], &buffer[pocitadlo + countOfCharsToWrite]);
+        std::cout << menoKontaktu << std::endl;
+        pocitadlo += countOfCharsToWrite;
+    }
+
+    int idKontaktu = accountServer.CheckIfExistsInContactsFile(loginID, -1, menoKontaktu, false, -1, true);
+
+    return ID_MENO{
+            idKontaktu,
+            menoKontaktu
+    };
+}
+
+std::string Server::ShowContactsRequest(int loginID) {
+    return accountServer.LoadContactsFromFileID(loginID);
 }
 
 

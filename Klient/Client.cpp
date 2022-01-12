@@ -192,6 +192,19 @@ void Client::Listen() {
                     std::cout << "CONTACTO ADDENDO UNSUCEFSZA" << std::endl;
                     priznakMenu = 5;
                     break;
+                case BufferOutput::RemoveContactSuccessful:
+                    std::cout << "CONTACTO REMOVEDO SUCCESSFULLO" << std::endl;
+                    priznakMenu = 5;
+                    break;
+                case BufferOutput::RemoveContactUnsuccessful:
+                    std::cout << "CONTACTO REMOVEDO UNSUCEFSZA" << std::endl;
+                    priznakMenu = 5;
+                    break;
+                case BufferOutput::RequestContactsSuccessful:
+                    std::cout << "CONTACTO SHOWO SUCCESSFULLO" << std::endl;
+                    ProcessBufferContacts(buffer);
+                    priznakMenu = 5;
+                    break;
             }
             bzero(buffer, BUFF_SIZE);
         }
@@ -239,5 +252,33 @@ void Client::Menu() {
         }
         sleep(1);
     }
+
+}
+
+void Client::ProcessBufferContacts(char *buffer) {
+
+    int pocitadlo = 1;
+    int countOfCharsToWrite = 0;
+    std::string string;
+    int countOfWords = 0;
+
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+    std::cout << "Zoznam kontakov:" << std::endl;
+
+    std::cout << "" << std::endl;
+
+    while (buffer[pocitadlo] != 0) {
+        countOfCharsToWrite = buffer[pocitadlo] - 48;
+        pocitadlo++;
+        string = std::string(&buffer[pocitadlo], &buffer[pocitadlo + countOfCharsToWrite]);
+        pocitadlo += countOfCharsToWrite;
+        countOfWords++;
+
+        std::cout << "- - - " << string << std::endl;
+
+    }
+
+    std::cout << "" << std::endl;
 
 }

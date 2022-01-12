@@ -13,9 +13,9 @@ AccountClient::AccountClient(
 }
 
 void AccountClient::CreateAccount(std::string accName, std::string accPass, int accID) {
-    this->AccountName = accName;
-    this->AccountPassword = accPass;
-    this->AccountID = accID;
+this->AccountName = accName;
+this->AccountPassword = accPass;
+this->AccountID = accID;
 }
 
 
@@ -27,11 +27,11 @@ AccountClient::~AccountClient() {
 // lebo tebe vracia adresu toho vektora
 
 bool AccountClient::AddContact(int accID) {
-    if (std::find(this->ContactsArray->begin(), this->ContactsArray->end(), accID) != this->ContactsArray->end()) {
-        this->ContactsArray->push_back(accID);
-        return true;
-    }
-    return false;
+if (std::find(this->ContactsArray->begin(), this->ContactsArray->end(), accID) != this->ContactsArray->end()) {
+this->ContactsArray->push_back(accID);
+return true;
+}
+return false;
 }
 
 

@@ -23,12 +23,18 @@
 #include <unistd.h>
 #include "../SubMenus/SubMenus.h"
 
+enum class ContactsAction {
+    ContactAdded = 1,
+    ContactRemoved = 2,
+    ShowContacts = 3
+};
+
 class Client {
 
 private:
     int socDomena = AF_INET;
     int socType = SOCK_STREAM;
-    int port = 87613;
+    int port = 87619;
 
     char bufferSend[BUFF_SIZE];
     char bufferListen[BUFF_SIZE];
@@ -56,6 +62,9 @@ public:
     void Listen();
 
     void Menu();
+
+    // Spracuje buffer s ID a Menom Kontaktu
+    void ProcessBufferContacts(char* buffer);
 
 };
 
