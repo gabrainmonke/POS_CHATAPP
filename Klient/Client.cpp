@@ -27,7 +27,7 @@ Client::Client() {
     bzero((char *) &serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = socDomena;
 
-    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    serv_addr.sin_addr.s_addr = inet_addr("158.193.128.160");
 
     serv_addr.sin_port = htons(port);
 
@@ -129,9 +129,11 @@ void Client::Listen() {
             std::cout << "dsads" << std::endl;
 
             // Pride nam cislo ale ako char cize ak nam pride 50 - je to 2ka, takze my musime odpocitat 48
-            int serverOutput = (buffer[0] - 48);
+            char serverOutput = buffer[0];
 
-            switch ((BufferOutput) serverOutput) {
+            // veryPoggers - Jest Cislo tak odpocita, Jest znak tak nech tak. Poggers.
+
+            switch ((buffer[0] >= 48 && buffer[0] <=57 ? (BufferOutput) (int)(serverOutput - 48) : (BufferOutput) serverOutput)) {
 
                 case BufferOutput::RequestLogin:
                     break;
@@ -168,11 +170,27 @@ void Client::Listen() {
                     break;
                 case BufferOutput::LoginUnsuccessful:
                     std::cout << "LOGINDO UNSUCEFSZA" << std::endl;
-                    priznakMenu = 4;
+                    priznakMenu = 1;
                     break;
                 case BufferOutput::DeleteSuccess:
+                    std::cout << "DELETO SUCCESSFULLO" << std::endl;
+                    priznakMenu = 2;
                     break;
                 case BufferOutput::DeleteUnsuccessful:
+                    std::cout << "DELETO UNSUCEFSZA" << std::endl;
+                    priznakMenu = 3;
+                    break;
+                case BufferOutput::LogoutSuccessful:
+                    std::cout << "LOGOUTO SUCCESSFULLO" << std::endl;
+                    priznakMenu = 4;
+                    break;
+                case BufferOutput::AddContactSuccessful:
+                    std::cout << "CONTACTO ADDENDO SUCCESSFULLO" << std::endl;
+                    priznakMenu = 5;
+                    break;
+                case BufferOutput::AddContactUnsuccessful:
+                    std::cout << "CONTACTO ADDENDO UNSUCEFSZA" << std::endl;
+                    priznakMenu = 5;
                     break;
             }
             bzero(buffer, BUFF_SIZE);
@@ -203,8 +221,12 @@ void Client::Menu() {
                     SendMessage(subMenu.AfterLoginMenu());
                     break;
                 case 4:
-                    SendMessage(subMenu.Login());
+                    clientConnected = false;
                     break;
+                case 5:
+                    SendMessage(subMenu.Contacts());
+                    break;
+
             }
 
             // Pri prijati spravy si bude treba pamat aj predosly priznak
@@ -215,7 +237,6 @@ void Client::Menu() {
 
             priznakMenu = -1;
         }
-
         sleep(1);
     }
 

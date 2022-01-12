@@ -10,7 +10,10 @@ enum class BufferInput {
     Contacts = 5,
     SendMessage = 6,
     SendFile = 7,
-    GroupMessages = 8
+    GroupMessages = 8,
+    AddContact = 9,
+    RemoveContact = 'a',
+    RequestContacts = 'b'
 };
 
 enum class BufferOutput {
@@ -20,5 +23,8 @@ enum class BufferOutput {
     LoginSuccess = 4,
     LoginUnsuccessful = 5,
     DeleteSuccess = 6,
-    DeleteUnsuccessful = 7
+    DeleteUnsuccessful = 7,
+    LogoutSuccessful = 8,
+    AddContactSuccessful = 9,
+    AddContactUnsuccessful = 'a'
 };

@@ -39,6 +39,11 @@ typedef struct LOGGED_IN_CLIENT {
     int id;
 } LOG_IN_CL;
 
+typedef struct ID_A_MENO_KONTAKTU {
+    int id;
+    std::string meno;
+} ID_MENO;
+
 class Server {
 
 private:
@@ -47,7 +52,7 @@ private:
     int socType = SOCK_STREAM;
     int socProtocol = INADDR_ANY;;
 
-    int port = 87614;
+    int port = 87613;
 
     // SOCKET socketServer;
     // SOCKETADDR_IN address;
@@ -56,7 +61,7 @@ private:
     char bufferListen[BUFF_SIZE];
     IP_PORT ipOfClients[MAX_USERS] = {0};
 
-    int connectedClients[MAX_USERS] = {0};
+    std::vector<int> connectedClients;
 
     std::vector<LOG_IN_CL> loggedInClients;
 
@@ -87,6 +92,8 @@ public:
     int LoginRequest(char* buffer);
 
     int DeleteRequest(int id , char* buffer);
+
+    ID_MENO AddContactRequest(int loginID, char *buffer);
 
     // pep
 };

@@ -62,7 +62,7 @@ std::string SubMenus::LoginRegister() {
     std::cout << "" << std::endl;
 
     std::cin >> vstup;
-    char* test;
+    char *test;
 
     switch (vstup) {
         case 1:
@@ -208,6 +208,10 @@ std::string SubMenus::AfterLoginMenu() {
     switch (tmpInput) {
         case 1:
             return DeleteAccount();
+        case 2:
+            return LogOut();
+        case 3:
+            return Contacts();
         default:
             return std::to_string(-1);
     }
@@ -256,6 +260,79 @@ std::string SubMenus::DeleteAccount() {
 
 
     return outputBuffer;
+}
+
+std::string SubMenus::LogOut() {
+
+    char outputBuffer[256];
+    outputBuffer[0] = (int) BufferInput::LogOut;
+    return outputBuffer;
+
+}
+
+std::string SubMenus::Contacts() {
+    int vstup = 0;
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+    std::cout << "1. Pridat Kontakt: " << std::endl;
+    std::cout << "2. Zmazat Kontakt " << std::endl;
+    std::cout << "3. Vypisat Kontakty " << std::endl;
+
+    std::cout << "" << std::endl;
+    std::cout << "" << std::endl;
+
+    std::cin >> vstup;
+    char *test;
+
+    switch (vstup) {
+        case 1:
+            return AddContact();
+        case 2:
+            return RemoveContact();
+        case 3:
+            return ShowContacts();
+        default:
+            return nullptr;
+    }
+
+    return 0;
+}
+
+std::string SubMenus::AddContact() {
+    int vstup = 0;
+    std::string meno = "";
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+
+    std::cout << "Zadajte meno kontaktu pre pridanie. ( max 16 znakov ): " << std::endl;
+
+    do {
+        std::cin >> meno;
+    } while (meno.length() > 16);
+
+
+    char outputBuffer[256];
+    bzero(outputBuffer, 256);
+
+    int position = 0;
+    outputBuffer[0] = (int) BufferInput::AddContact;
+    position += 1;
+
+    outputBuffer[position] = meno.size();
+    position += 1;
+
+    meno.copy(outputBuffer + position, meno.size(), 0);
+    position += meno.size();
+
+    return outputBuffer;
+}
+
+std::string SubMenus::RemoveContact() {
+    return nullptr;
+}
+
+std::string SubMenus::ShowContacts() {
+    return nullptr;
 }
 
 

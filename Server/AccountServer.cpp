@@ -35,7 +35,7 @@ bool AccountServer::AddContact(int accID) {
 }
 
 int AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
-    File.open("Accounts.txt", std::ios::out | std::ios::in | std::ios::app);
+    FileAccounts.open("Accounts.txt", std::ios::out | std::ios::in | std::ios::app);
 
     std::string id;
     std::string meno;
@@ -46,12 +46,12 @@ int AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
     idPocitadlo = CheckIfExists(pMeno, pHeslo);
 
     if (idPocitadlo != -1) {
-        File << std::to_string(idPocitadlo) + ";" + pMeno + ";" + pHeslo + "\n";
-        //File.write(dataAccount.data(), dataAccount.size());
-        File.close();
+        FileAccounts << std::to_string(idPocitadlo) + ";" + pMeno + ";" + pHeslo + "\n";
+        //FileAccounts.write(dataAccount.data(), dataAccount.size());
+        FileAccounts.close();
         return idPocitadlo;
     }
-    File.close();
+    FileAccounts.close();
     return -1;
 
 }
@@ -66,26 +66,26 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo, bool onl
 
     int oldPos = 0;
 
-    if (onlyCheck && !File.is_open()) {
-        File.open("Accounts.txt", std::ios::out | std::ios::in );
+    if (onlyCheck && !FileAccounts.is_open()) {
+        FileAccounts.open("Accounts.txt", std::ios::out | std::ios::in );
     }
 
-    if (File.is_open()) {
+    if (FileAccounts.is_open()) {
         std::string line;
         std::string splitLine;
         std::stringstream lineInStringStream;
-        getline(File, line);
-        File.clear();
-        File.seekg(0);
+        getline(FileAccounts, line);
+        FileAccounts.clear();
+        FileAccounts.seekg(0);
         if (line.empty()) {
-            // File.write(identifier.data(), identifier.size());
-            File << "ID;MENO;HESLO\n";
+            // FileAccounts.write(identifier.data(), identifier.size());
+            FileAccounts << "ID;MENO;HESLO\n";
         } else {
-            getline(File, line);
+            getline(FileAccounts, line);
         }
         do {
-            oldPos =  File.tellg();
-            getline(File, line);
+            oldPos =  FileAccounts.tellg();
+            getline(FileAccounts, line);
             lineInStringStream.clear();
             lineInStringStream << line;
             if (!line.empty()) {
@@ -101,13 +101,15 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo, bool onl
 
                 if (onlyCheck ) {
                     if (pId > 0 && (pId == numberID) && (heslo == pHeslo)) {
-                        File.clear();
-                        File.seekg(oldPos);
+                        FileAccounts.clear();
+                        FileAccounts.seekg(oldPos);
                         std::string invalidLine = "-1;-1;-1";
                         invalidLine.resize(line.size());
-                        File << invalidLine << std::endl;
+                        FileAccounts << invalidLine << std::endl;
                         return numberID;
                     } else if ((meno == pMeno) && (heslo == pHeslo)) {
+                        return std::stoi(id);
+                    } else if ((pHeslo.empty()) && (meno == pMeno)) {
                         return std::stoi(id);
                     }
 
@@ -123,8 +125,8 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo, bool onl
         } while (!line.empty());
     }
 
-    File.clear();
-    File.seekg(oldPos);
+    FileAccounts.clear();
+    FileAccounts.seekg(oldPos);
 
     if (onlyCheck) {
         return -1;
@@ -163,6 +165,131 @@ std::string AccountServer::SendUnsuccessfulDelete() {
     std::string delUnsucc = std::to_string((int)BufferOutput::DeleteUnsuccessful);
     return delUnsucc;
 }
+
+std::string AccountServer::SendUnsuccessfulLogOut() {
+    std::string logOutSucc = std::to_string((int)BufferOutput::LogoutSuccessful);
+    return logOutSucc;
+}
+
+std::string AccountServer::SendSuccessAddContact(int idKontakt, std::string menoKontaktu) {
+    std::string AddContSucc = std::to_string((int)BufferOutput::AddContactSuccessful);
+    AddContSucc += std::to_string(idKontakt);
+    AddContSucc += std::to_string(menoKontaktu.size());
+    AddContSucc += menoKontaktu;
+    return AddContSucc;
+}
+
+std::string AccountServer::SendUnsuccessfulAddContact() {
+    char charakter = static_cast<char>(BufferOutput::AddContactUnsuccessful);
+    std::string AddContUnsucc( 1, charakter);
+    return AddContUnsucc;
+}
+
+int AccountServer::SaveToContactsFile(int mojeID, std::string menoKontaktu) {
+    FileContacts.open("Contacts/" + std::to_string(mojeID), std::ios::out | std::ios::in | std::ios::app);
+
+    std::string id;
+    std::string meno;
+    std::string heslo;
+
+    int idKontaktu = -1;
+
+    int idPocitadlo = 0;
+
+    idKontaktu = CheckIfExists(menoKontaktu, "", true); // Kontroluje v subore MIEN/HESIEL - Accounts.txt
+
+    if (idKontaktu <= -1) {
+        return -1;
+    }
+
+    idPocitadlo = CheckIfExistsInContactsFile(mojeID, idKontaktu, menoKontaktu);
+
+    if (idPocitadlo != -1) {
+        FileContacts << std::to_string(idKontaktu) + ";" + menoKontaktu + "\n";
+        //FileAccounts.write(dataAccount.data(), dataAccount.size());
+        FileContacts.close();
+        return idKontaktu;
+    }
+    FileContacts.close();
+    return -1;
+}
+
+int AccountServer::CheckIfExistsInContactsFile(int mojeID, int idKontaktu, std::string menoKontaktu, bool onlyCheck,
+                                               int pId) {
+    int idPocitadlo = 1;
+
+    std::string id;
+    std::string meno;
+    std::string heslo;
+
+    int oldPos = 0;
+
+    if (onlyCheck && !FileContacts.is_open()) {
+        FileContacts.open("Contacts/" + std::to_string(mojeID), std::ios::out | std::ios::in );
+    }
+
+    if (FileContacts.is_open()) {
+        std::string line;
+        std::string splitLine;
+        std::stringstream lineInStringStream;
+        getline(FileContacts, line);
+        FileContacts.clear();
+        FileContacts.seekg(0);
+        if (line.empty()) {
+            // FileAccounts.write(identifier.data(), identifier.size());
+            FileContacts << "ID;MENO\n";
+        } else {
+            getline(FileContacts, line);
+        }
+        do {
+            oldPos =  FileContacts.tellg();
+            getline(FileContacts, line);
+            lineInStringStream.clear();
+            lineInStringStream << line;
+            if (!line.empty()) {
+                getline(lineInStringStream, splitLine, ';');
+                id = splitLine;
+                getline(lineInStringStream, splitLine, ';');
+                meno = splitLine;
+
+                idPocitadlo++;
+                int numberID = std::stoi(id);
+
+                if (onlyCheck ) {
+                    if (pId > 0 && (pId == numberID)) {
+                        FileContacts.clear();
+                        FileContacts.seekg(oldPos);
+                        std::string invalidLine = "-1;-1";
+                        invalidLine.resize(line.size());
+                        FileContacts << invalidLine << std::endl;
+                        return numberID;
+                    } else if ((meno == menoKontaktu)) {
+                        return std::stoi(id);
+                    }
+
+
+
+                } else if (!onlyCheck && (meno == menoKontaktu)) {
+                    // Meno uz existuje
+                    return -1;
+                }
+
+            }
+
+        } while (!line.empty());
+    }
+
+    FileContacts.clear();
+    FileContacts.seekg(oldPos);
+
+    if (onlyCheck) {
+        return -1;
+    } else {
+        return idPocitadlo;
+    }
+}
+
+
 
 
 

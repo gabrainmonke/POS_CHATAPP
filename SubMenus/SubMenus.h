@@ -21,6 +21,11 @@ public:
     std::string Register();
     std::string AfterLoginMenu();
     std::string DeleteAccount();
+    std::string LogOut();
+    std::string Contacts();
+    std::string AddContact();
+    std::string RemoveContact();
+    std::string ShowContacts();
 };
 
 

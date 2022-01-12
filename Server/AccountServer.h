@@ -23,7 +23,8 @@ private:
     int AccountID = -1;
     std::vector<int> ContactsArray[MAX_CONTACTS];
     std::string FileName = "";
-    std::fstream File;
+    std::fstream FileAccounts;
+    std::fstream FileContacts;
 
 public:
 
@@ -38,7 +39,11 @@ public:
 
     int SaveToFile(std::string pMeno, std::string pHeslo);
 
-    int CheckIfExists(std::string pMeno, std::string pHeslo, bool onlyCheck = false, int pId = -1);
+    int SaveToContactsFile(int mojeID, std::string menoKontaktu);
+
+    int CheckIfExists(std::string pMeno, std::string pHeslo = "", bool onlyCheck = false, int pId = -1);
+
+    int CheckIfExistsInContactsFile(int mojeID, int idKontaktu, std::string menoKontaktu, bool onlyCheck = false, int pId = -1);
 
     std::string SendSuccessRegister(int ID);
 
@@ -51,6 +56,12 @@ public:
     std::string SendSuccessDelete();
 
     std::string SendUnsuccessfulDelete();
+
+    std::string SendUnsuccessfulLogOut();
+
+    std::string SendSuccessAddContact(int idKontaktu, std::string menoKontaktu);
+
+    std::string SendUnsuccessfulAddContact();
 
 
     ~AccountServer();
