@@ -26,6 +26,7 @@ public:
     std::string AddContact();
     std::string RemoveContact();
     std::string ShowContacts();
+    std::string SendChatMessage();
 };
 
 

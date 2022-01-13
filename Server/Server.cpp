@@ -127,11 +127,14 @@ void Server::Listen() {
                     std::string string;
                     int registracneID;
                     int clientSocket = -1;
+                    int recvSocket = -1;
                     int loginID = -1;
                     int clientToRemove = -1;
                     int pocitadloIterator = 0;
                     ID_MENO regIDMENO;
+                    MESSAGE_TO_RECV messWithRecv;
                     std::string kontakty;
+                    std::string message;
 
                     switch ((BufferInput) buffer[0]) {
                         case BufferInput::CreateAccount:
@@ -228,6 +231,33 @@ void Server::Listen() {
                             break;
                         case BufferInput::SendMessage:
                             std::cout << "Pokus o odoslanie spravy" << std::endl;
+                            clientSocket = connectedClients[i];
+
+                            for (LOG_IN_CL item: loggedInClients) {
+                                if (item.socket == clientSocket) {
+                                    loginID = item.id;
+                                    clientToRemove = pocitadloIterator;
+                                }
+                                pocitadloIterator++;
+                            }
+
+                            messWithRecv = ProcessMessageToClient(buffer);
+
+                            for (LOG_IN_CL item: loggedInClients) {
+                                if (item.id == messWithRecv.id) {
+                                    recvSocket = item.socket;
+                                }
+                            }
+
+                            // Prijimatel je online, odosleme mu spravu hned
+                            if (recvSocket > -1) {
+                                SendMessage(accountServer.SendChatMessageToReceiver(messWithRecv.sprava), recvSocket);
+                                SendMessage(accountServer.SendSuccessMessageSend(), connectedClients[i]);
+                            } else {
+                                SendMessage(accountServer.SendUnsuccessfulMessageSend(), connectedClients[i]);
+                            }
+
+
                             break;
                         case BufferInput::SendFile:
                             std::cout << "Pokus o odoslanie suboru" << std::endl;
@@ -431,6 +461,31 @@ ID_MENO Server::RemoveContactRequest(int loginID, char *buffer) {
 
 std::string Server::ShowContactsRequest(int loginID) {
     return accountServer.LoadContactsFromFileID(loginID);
+}
+
+MESSAGE_TO_RECV Server::ProcessMessageToClient(char* buffer) {
+    int pocitadlo = 1;
+    int countOfCharsToWrite = 0;
+    std::string menoKontaktu;
+    std::string sprava;
+    int countOfWords = 0;
+
+    // Najprv nacitame, komu treba odoslat spravu
+    countOfCharsToWrite = buffer[pocitadlo];
+    pocitadlo++;
+    menoKontaktu = std::string(&buffer[pocitadlo], &buffer[pocitadlo + countOfCharsToWrite]);
+    std::cout << menoKontaktu << std::endl;
+    pocitadlo += countOfCharsToWrite;
+    // Potom nacitame spravu
+
+    sprava = std::string(&buffer[pocitadlo], &buffer[pocitadlo + (BUFF_SIZE - pocitadlo)]);
+
+    int idKontaktu = accountServer.CheckIfExists(menoKontaktu, "", true);
+
+    return MESSAGE_TO_RECV {
+            idKontaktu,
+            sprava
+    };
 }
 
 

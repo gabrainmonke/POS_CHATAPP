@@ -45,6 +45,10 @@ public:
 
     int CheckIfExistsInContactsFile(int mojeID, int idKontaktu, std::string menoKontaktu, bool onlyCheck = false, int pId = -1, bool parDelete = false);
 
+    std::string EncryptPass(std::string pass);
+
+    std::string DecryptPass(std::string pass);
+
     std::string LoadContactsFromFileID(int mojeID);
 
     std::string SendSuccessRegister(int ID);
@@ -70,6 +74,14 @@ public:
     std::string SendUnsuccessfulRemoveContact();
 
     std::string SendSuccessShowContacts(std::string contacts);
+
+    std::string SendChatMessageToReceiver(std::string message);
+
+    std::string SendSuccessMessageSend();
+
+    std::string SendUnsuccessfulMessageSend();
+
+
 
 
 

@@ -133,7 +133,8 @@ void Client::Listen() {
 
             // veryPoggers - Jest Cislo tak odpocita, Jest znak tak nech tak. Poggers.
 
-            switch ((buffer[0] >= 48 && buffer[0] <=57 ? (BufferOutput) (int)(serverOutput - 48) : (BufferOutput) serverOutput)) {
+            switch ((buffer[0] >= 48 && buffer[0] <= 57 ? (BufferOutput) (int) (serverOutput - 48)
+                                                        : (BufferOutput) serverOutput)) {
 
                 case BufferOutput::RequestLogin:
                     break;
@@ -204,6 +205,19 @@ void Client::Listen() {
                     std::cout << "CONTACTO SHOWO SUCCESSFULLO" << std::endl;
                     ProcessBufferContacts(buffer);
                     priznakMenu = 5;
+                    break;
+                case BufferOutput::SendingMessage:
+                    std::cout << "MESSAGE RECIVENDO SUCCESSFULLO" << std::endl;
+                    ProcessBufferMessage(buffer);
+                    priznakMenu = 3;
+                    break;
+                case BufferOutput::SendMessageSuccessful:
+                    std::cout << "MESSAGE SENDO SUCCESSFULLO" << std::endl;
+                    priznakMenu = 3;
+                    break;
+                case BufferOutput::SendMessageUnsuccessful:
+                    std::cout << "MESSAGE SENDO UNSUCEFSZA" << std::endl;
+                    priznakMenu = 3;
                     break;
             }
             bzero(buffer, BUFF_SIZE);
@@ -281,4 +295,21 @@ void Client::ProcessBufferContacts(char *buffer) {
 
     std::cout << "" << std::endl;
 
+}
+
+void Client::ProcessBufferMessage(char *buffer) {
+    int pocitadlo = 1;
+    int countOfCharsToWrite = 0;
+    std::string string;
+    int countOfWords = 0;
+
+    string = std::string(&buffer[pocitadlo], &buffer[pocitadlo + (BUFF_SIZE - pocitadlo)]);
+    pocitadlo += countOfCharsToWrite;
+    countOfWords++;
+
+    std::string::size_type poziciaNullCharu = string.find((char)0);
+
+    string = string.substr(0, poziciaNullCharu);
+
+    std::cout << "SPRAVA: " <<  string << std::endl;
 }

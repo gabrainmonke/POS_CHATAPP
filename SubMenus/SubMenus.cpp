@@ -212,6 +212,8 @@ std::string SubMenus::AfterLoginMenu() {
             return LogOut();
         case 3:
             return Contacts();
+        case 4:
+            return SendChatMessage();
         default:
             return std::to_string(-1);
     }
@@ -278,11 +280,12 @@ std::string SubMenus::Contacts() {
     std::cout << "2. Zmazat Kontakt " << std::endl;
     std::cout << "3. Vypisat Kontakty " << std::endl;
 
+    std::cout << "0. Navrat spat " << std::endl;
+
     std::cout << "" << std::endl;
     std::cout << "" << std::endl;
 
     std::cin >> vstup;
-    char *test;
 
     switch (vstup) {
         case 1:
@@ -292,7 +295,7 @@ std::string SubMenus::Contacts() {
         case 3:
             return ShowContacts();
         default:
-            return nullptr;
+            return AfterLoginMenu();
     }
 
     return 0;
@@ -365,6 +368,43 @@ std::string SubMenus::ShowContacts() {
     int position = 0;
     outputBuffer[0] = (int) BufferInput::RequestContacts;
     position += 1;
+
+    return outputBuffer;
+}
+
+std::string SubMenus::SendChatMessage() {
+    int vstup = 0;
+    std::string meno = "";
+    std::string sprava  = "";
+    std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+
+
+    std::cout << "Zadajte meno kontaktu na odoslanie. ( max 16 znakov ): " << std::endl;
+
+    do {
+        std::cin >> meno;
+    } while (meno.length() > 16);
+
+
+
+    char outputBuffer[256];
+    bzero(outputBuffer, 256);
+
+    int position = 0;
+    outputBuffer[0] = (int) BufferInput::SendMessage;
+    position += 1;
+
+    outputBuffer[position] = meno.size();
+    position += 1;
+
+    meno.copy(outputBuffer + position, meno.size(), 0);
+    position += meno.size();
+
+    std::cout << "Zadajte spravu: " << std::endl;
+
+    std::getline(std::cin >> std::ws, sprava);
+
+    sprava.copy(outputBuffer + position, sprava.size(), 0);
 
     return outputBuffer;
 }

@@ -44,6 +44,11 @@ typedef struct ID_A_MENO_KONTAKTU {
     std::string meno;
 } ID_MENO;
 
+typedef struct MESSAGE_WITH_RECEIVER{
+    int id;
+    std::string sprava;
+} MESSAGE_TO_RECV;
+
 class Server {
 
 private:
@@ -52,7 +57,7 @@ private:
     int socType = SOCK_STREAM;
     int socProtocol = INADDR_ANY;;
 
-    int port = 87619;
+    int port = 87613;
 
     // SOCKET socketServer;
     // SOCKETADDR_IN address;
@@ -98,6 +103,8 @@ public:
     ID_MENO RemoveContactRequest(int loginID, char *buffer);
 
     std::string ShowContactsRequest(int loginID);
+
+    MESSAGE_TO_RECV ProcessMessageToClient(char *buffer);
 
     // pep
 };

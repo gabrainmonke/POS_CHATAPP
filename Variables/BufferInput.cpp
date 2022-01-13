@@ -30,4 +30,7 @@ enum class BufferOutput {
     RemoveContactSuccessful = 'b',
     RemoveContactUnsuccessful = 'c',
     RequestContactsSuccessful = 'd',
+    SendingMessage = 'e',
+    SendMessageSuccessful = 'f',
+    SendMessageUnsuccessful = 'g'
 };

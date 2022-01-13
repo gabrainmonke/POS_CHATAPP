@@ -46,7 +46,7 @@ int AccountServer::SaveToFile(std::string pMeno, std::string pHeslo) {
     idPocitadlo = CheckIfExists(pMeno, pHeslo);
 
     if (idPocitadlo != -1) {
-        FileAccounts << std::to_string(idPocitadlo) + ";" + pMeno + ";" + pHeslo + "\n";
+        FileAccounts << std::to_string(idPocitadlo) + ";" + pMeno + ";" + EncryptPass(pHeslo) + "\n";
         //FileAccounts.write(dataAccount.data(), dataAccount.size());
         FileAccounts.close();
         return idPocitadlo;
@@ -96,10 +96,13 @@ int AccountServer::CheckIfExists(std::string pMeno, std::string pHeslo, bool onl
                 getline(lineInStringStream, splitLine, '\n');
                 heslo = splitLine;
 
+
+
                 idPocitadlo++;
                 int numberID = std::stoi(id);
 
                 if (onlyCheck ) {
+                    heslo = DecryptPass(heslo);
                     if (pId > 0 && (pId == numberID) && (heslo == pHeslo)) {
                         FileAccounts.clear();
                         FileAccounts.seekg(oldPos);
@@ -387,6 +390,39 @@ std::string AccountServer::LoadContactsFromFileID(int mojeID) {
     FileContacts.close();
 
     return returnString;
+}
+
+std::string AccountServer::SendChatMessageToReceiver(std::string message) {
+    char charakter = static_cast<char>(BufferOutput::SendingMessage);
+    std::string Message(1, charakter);
+    Message += message;
+    return Message;
+}
+
+std::string AccountServer::SendSuccessMessageSend() {
+    char charakter = static_cast<char>(BufferOutput::SendMessageSuccessful);
+    std::string SendMessageSucc(1, charakter);
+    return SendMessageSucc;
+}
+
+std::string AccountServer::SendUnsuccessfulMessageSend() {
+    char charakter = static_cast<char>(BufferOutput::SendMessageUnsuccessful);
+    std::string SendMessageUnsucc(1, charakter);
+    return SendMessageUnsucc;
+}
+
+std::string AccountServer::EncryptPass(std::string pass) {
+    for (int i = 0; i <= pass.size(); i++) {
+        pass[i] = pass[i] + i + 1;
+    }
+    return pass;
+}
+
+std::string AccountServer::DecryptPass(std::string pass) {
+    for (int i = 0; i <= pass.size(); i++) {
+        pass[i] = pass[i] - i - 1;
+    }
+    return pass;
 }
 
 

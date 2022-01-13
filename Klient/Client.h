@@ -34,7 +34,7 @@ class Client {
 private:
     int socDomena = AF_INET;
     int socType = SOCK_STREAM;
-    int port = 87619;
+    int port = 87613;
 
     char bufferSend[BUFF_SIZE];
     char bufferListen[BUFF_SIZE];
@@ -65,6 +65,8 @@ public:
 
     // Spracuje buffer s ID a Menom Kontaktu
     void ProcessBufferContacts(char* buffer);
+
+    void ProcessBufferMessage(char* buffer);
 
 };
 
