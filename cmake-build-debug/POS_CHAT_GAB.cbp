@@ -8,42 +8,45 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/tmp/tmp.cpbKGoNjTh/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.gqMMUvIIb5/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/tmp/tmp.cpbKGoNjTh/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.gqMMUvIIb5/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/tmp/tmp.cpbKGoNjTh/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.gqMMUvIIb5/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="POS_CHAT_GAB">
-				<Option output="/tmp/tmp.cpbKGoNjTh/cmake-build-debug/POS_CHAT_GAB" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.cpbKGoNjTh/cmake-build-debug"/>
+				<Option output="/tmp/tmp.gqMMUvIIb5/cmake-build-debug/POS_CHAT_GAB" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.gqMMUvIIb5/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/tmp/tmp.gqMMUvIIb5/./domain"/>
+					<Add directory="/tmp/tmp.gqMMUvIIb5/./calc"/>
+					<Add directory="/tmp/tmp.gqMMUvIIb5/./src/include"/>
 					<Add directory="/usr/include/c++/10"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
 					<Add directory="/usr/include/c++/10/backward"/>
@@ -53,19 +56,22 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 POS_CHAT_GAB"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 POS_CHAT_GAB"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="POS_CHAT_GAB/fast">
-				<Option output="/tmp/tmp.cpbKGoNjTh/cmake-build-debug/POS_CHAT_GAB" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.cpbKGoNjTh/cmake-build-debug"/>
+				<Option output="/tmp/tmp.gqMMUvIIb5/cmake-build-debug/POS_CHAT_GAB" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.gqMMUvIIb5/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/tmp/tmp.gqMMUvIIb5/./domain"/>
+					<Add directory="/tmp/tmp.gqMMUvIIb5/./calc"/>
+					<Add directory="/tmp/tmp.gqMMUvIIb5/./src/include"/>
 					<Add directory="/usr/include/c++/10"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/10"/>
 					<Add directory="/usr/include/c++/10/backward"/>
@@ -75,50 +81,50 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 POS_CHAT_GAB/fast"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.cpbKGoNjTh/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 POS_CHAT_GAB/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.gqMMUvIIb5/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Klient/AccountClient.cpp">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Klient/AccountClient.cpp">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Klient/AccountClient.h">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Klient/AccountClient.h">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Klient/Client.cpp">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Klient/Client.cpp">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Klient/Client.h">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Klient/Client.h">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Server/AccountServer.cpp">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Server/AccountServer.cpp">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Server/AccountServer.h">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Server/AccountServer.h">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Server/Server.cpp">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Server/Server.cpp">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Server/Server.h">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Server/Server.h">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/SubMenus/SubMenus.cpp">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/SubMenus/SubMenus.cpp">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/SubMenus/SubMenus.h">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/SubMenus/SubMenus.h">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/Variables/BufferInput.cpp">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/Variables/BufferInput.cpp">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/main.cpp">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/main.cpp">
 			<Option target="POS_CHAT_GAB"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.cpbKGoNjTh/CMakeLists.txt">
+		<Unit filename="/tmp/tmp.gqMMUvIIb5/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

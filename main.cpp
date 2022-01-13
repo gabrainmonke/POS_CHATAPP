@@ -2,10 +2,11 @@
 #include "Server/Server.h"
 #include "Klient/Client.h"
 #include "SubMenus/SubMenus.h"
-
 #include <thread>
 
 int main() {
+    // shell command na vytvaranie zložky pre kontakty
+    system("mkdir -p Contacts");
 
     SubMenus subMenus;
 
@@ -25,53 +26,52 @@ int main() {
     if (vstupServerKlient == 1) {
         Server server;
         std::thread tmpThreadForListening(&Server::Run, &server);
+        std::thread tmpThreadForListeningClients(&Server::Listen, &server);
 
         std::cout << "Pokusam sa spustit Server" << std::endl;
 
         tmpThreadForListening.join();
+        tmpThreadForListeningClients.join();
+
+        server.Shutdown();
     } else {
-        Client client;
-    }
+        bool ukonci = false;
+        do {
+            Client client;
+            std::thread tmpClientThreadForListening(&Client::Listen, &client);
+            std::thread tmpClientThreadForMenu(&Client::Menu, &client);
 
-    // Ak sme spustili Server, interakcia konci...
-    if (vstupServerKlient == 1) {
-        return 0;
-    }
+            std::cout << "Pokusam sa spustit Klienta" << std::endl;
 
-    std::cout << "Pokusam sa spustit Klienta" << std::endl;
+            tmpClientThreadForListening.join();
+            tmpClientThreadForMenu.join();
 
-    // Inak Klient Logika
+            std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
 
-    bool ukonci = false;
+            std::cout << "" << std::endl;
+            std::cout << "" << std::endl;
 
-    while (!ukonci) {
+            std::cout << "1. Pokracovat naspat do applikacie" << std::endl;
+            std::cout << "2. Vypnut aplikaciu" << std::endl;
 
-        std::cout << "Vitajte v Chatovej Aplikacii" << std::endl;
+            std::cout << "" << std::endl;
 
-        std::cout << "" << std::endl;
-        std::cout << "" << std::endl;
+            int tmpInput = 0;
 
-        std::cout << "1. Vytvorte/Zruste Ucet" << std::endl;
-        std::cout << "2. Prihlasit/Odhlasit Sa" << std::endl;
-        std::cout << "3. Kontakty" << std::endl;
-        std::cout << "4. Poslat spravu" << std::endl;
-        std::cout << "5. Poslat subor" << std::endl;
-        std::cout << "6. Skupinove konverzacie" << std::endl;
+            std::cout << "-- Zadajte vstup: 1-2 --" << std::endl;
+            std::cin >> tmpInput;
+            std::cout << "-- Zadali ste: " << tmpInput << "." << std::endl;
 
-        std::cout << "" << std::endl;
-        std::cout << "" << std::endl;
+            if (tmpInput == 2) {
+                ukonci = true;
+            }
 
-        std::cout << "7. Vypnut" << std::endl;
+        } while (!ukonci);
 
-        int tmpInput = 0;
-
-        std::cout << "-- Zadajte vstup: 1-7 --" << std::endl;
-        std::cin >> tmpInput;
-        std::cout << "-- Zadali ste: " << tmpInput << "." << std::endl;
-
-        subMenus.Run(tmpInput) == 7 ? ukonci = true : ukonci = false;
+        // Ak sme spustili Server, interakcia konci...
+        if (vstupServerKlient == 1) {
+            return 0;
+        }
 
     }
-
-
 }

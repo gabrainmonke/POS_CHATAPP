@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.cpbKGoNjTh
+CMAKE_SOURCE_DIR = /tmp/tmp.gqMMUvIIb5
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.cpbKGoNjTh/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.gqMMUvIIb5/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/POS_CHAT_GAB.dir/depend.make
@@ -78,118 +78,118 @@ include CMakeFiles/POS_CHAT_GAB.dir/flags.make
 
 CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
 CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o -c /tmp/tmp.cpbKGoNjTh/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o -c /tmp/tmp.gqMMUvIIb5/main.cpp
 
 CMakeFiles/POS_CHAT_GAB.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.cpbKGoNjTh/main.cpp > CMakeFiles/POS_CHAT_GAB.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.gqMMUvIIb5/main.cpp > CMakeFiles/POS_CHAT_GAB.dir/main.cpp.i
 
 CMakeFiles/POS_CHAT_GAB.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.cpbKGoNjTh/main.cpp -o CMakeFiles/POS_CHAT_GAB.dir/main.cpp.s
-
-CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
-CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o: ../Klient/AccountClient.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o -c /tmp/tmp.cpbKGoNjTh/Klient/AccountClient.cpp
-
-CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.cpbKGoNjTh/Klient/AccountClient.cpp > CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.i
-
-CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.cpbKGoNjTh/Klient/AccountClient.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.gqMMUvIIb5/main.cpp -o CMakeFiles/POS_CHAT_GAB.dir/main.cpp.s
 
 CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
 CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o: ../Klient/Client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o -c /tmp/tmp.cpbKGoNjTh/Klient/Client.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o -c /tmp/tmp.gqMMUvIIb5/Klient/Client.cpp
 
 CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.cpbKGoNjTh/Klient/Client.cpp > CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.gqMMUvIIb5/Klient/Client.cpp > CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.i
 
 CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.cpbKGoNjTh/Klient/Client.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.s
-
-CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
-CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o: ../Server/AccountServer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o -c /tmp/tmp.cpbKGoNjTh/Server/AccountServer.cpp
-
-CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.cpbKGoNjTh/Server/AccountServer.cpp > CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.i
-
-CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.cpbKGoNjTh/Server/AccountServer.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.gqMMUvIIb5/Klient/Client.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.s
 
 CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
 CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o: ../Server/Server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o -c /tmp/tmp.cpbKGoNjTh/Server/Server.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o -c /tmp/tmp.gqMMUvIIb5/Server/Server.cpp
 
 CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.cpbKGoNjTh/Server/Server.cpp > CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.gqMMUvIIb5/Server/Server.cpp > CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.i
 
 CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.cpbKGoNjTh/Server/Server.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.gqMMUvIIb5/Server/Server.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.s
 
 CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
 CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o: ../SubMenus/SubMenus.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o -c /tmp/tmp.cpbKGoNjTh/SubMenus/SubMenus.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o -c /tmp/tmp.gqMMUvIIb5/SubMenus/SubMenus.cpp
 
 CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.cpbKGoNjTh/SubMenus/SubMenus.cpp > CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.gqMMUvIIb5/SubMenus/SubMenus.cpp > CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.i
 
 CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.cpbKGoNjTh/SubMenus/SubMenus.cpp -o CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.gqMMUvIIb5/SubMenus/SubMenus.cpp -o CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.s
 
 CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
 CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o: ../Variables/BufferInput.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o -c /tmp/tmp.cpbKGoNjTh/Variables/BufferInput.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o -c /tmp/tmp.gqMMUvIIb5/Variables/BufferInput.cpp
 
 CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.cpbKGoNjTh/Variables/BufferInput.cpp > CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.gqMMUvIIb5/Variables/BufferInput.cpp > CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.i
 
 CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.cpbKGoNjTh/Variables/BufferInput.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.gqMMUvIIb5/Variables/BufferInput.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.s
+
+CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
+CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o: ../Klient/AccountClient.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o -c /tmp/tmp.gqMMUvIIb5/Klient/AccountClient.cpp
+
+CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.gqMMUvIIb5/Klient/AccountClient.cpp > CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.i
+
+CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.gqMMUvIIb5/Klient/AccountClient.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.s
+
+CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o: CMakeFiles/POS_CHAT_GAB.dir/flags.make
+CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o: ../Server/AccountServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o -c /tmp/tmp.gqMMUvIIb5/Server/AccountServer.cpp
+
+CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.gqMMUvIIb5/Server/AccountServer.cpp > CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.i
+
+CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.gqMMUvIIb5/Server/AccountServer.cpp -o CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.s
 
 # Object files for target POS_CHAT_GAB
 POS_CHAT_GAB_OBJECTS = \
 "CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o" \
-"CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o" \
 "CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o" \
-"CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o" \
 "CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o" \
 "CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o" \
-"CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o"
+"CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o" \
+"CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o" \
+"CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o"
 
 # External object files for target POS_CHAT_GAB
 POS_CHAT_GAB_EXTERNAL_OBJECTS =
 
 POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/main.cpp.o
-POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o
 POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/Klient/Client.cpp.o
-POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o
 POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/Server/Server.cpp.o
 POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/SubMenus/SubMenus.cpp.o
 POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/Variables/BufferInput.cpp.o
+POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/Klient/AccountClient.cpp.o
+POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/Server/AccountServer.cpp.o
 POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/build.make
 POS_CHAT_GAB: CMakeFiles/POS_CHAT_GAB.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable POS_CHAT_GAB"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable POS_CHAT_GAB"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/POS_CHAT_GAB.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -202,6 +202,6 @@ CMakeFiles/POS_CHAT_GAB.dir/clean:
 .PHONY : CMakeFiles/POS_CHAT_GAB.dir/clean
 
 CMakeFiles/POS_CHAT_GAB.dir/depend:
-	cd /tmp/tmp.cpbKGoNjTh/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /tmp/tmp.cpbKGoNjTh /tmp/tmp.cpbKGoNjTh /tmp/tmp.cpbKGoNjTh/cmake-build-debug /tmp/tmp.cpbKGoNjTh/cmake-build-debug /tmp/tmp.cpbKGoNjTh/cmake-build-debug/CMakeFiles/POS_CHAT_GAB.dir/DependInfo.cmake --color=$(COLOR)
+	cd /tmp/tmp.gqMMUvIIb5/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /tmp/tmp.gqMMUvIIb5 /tmp/tmp.gqMMUvIIb5 /tmp/tmp.gqMMUvIIb5/cmake-build-debug /tmp/tmp.gqMMUvIIb5/cmake-build-debug /tmp/tmp.gqMMUvIIb5/cmake-build-debug/CMakeFiles/POS_CHAT_GAB.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/POS_CHAT_GAB.dir/depend
 
